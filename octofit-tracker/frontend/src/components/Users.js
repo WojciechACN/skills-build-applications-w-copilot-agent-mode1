@@ -18,13 +18,34 @@ const Users = () => {
   }, [baseUrl]);
 
   return (
-    <div>
-      <h2>Users</h2>
-      <ul>
-        {users.map((user, idx) => (
-          <li key={user.id || idx}>{JSON.stringify(user)}</li>
-        ))}
-      </ul>
+    <div className="card mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4">Users</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover">
+            <thead className="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Superhero</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, idx) => (
+                <tr key={user.id || idx}>
+                  <td>{idx + 1}</td>
+                  <td>{user.email || '-'}</td>
+                  <td>{user.name || '-'}</td>
+                  <td>{user.team || '-'}</td>
+                  <td>{user.is_superhero ? 'Yes' : 'No'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
